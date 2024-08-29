@@ -6,7 +6,7 @@ import numpy as np
 from datetime import datetime
 
 
-class Fy3eHeader:
+class Fy3MersiHeader:
     """
     TODO: doc
     """
@@ -67,7 +67,7 @@ class Fy3eHeader:
         return self.__l0_date_creation
     
 
-class Fy3eMetadata:
+class Fy3MersiMetadata:
     """
     TODO: doc
     """
@@ -88,7 +88,7 @@ class Fy3eMetadata:
         return self.__data
 
 
-class Fy3eDnBlock:
+class Fy3MersiDnBlock:
     """
     TODO: doc
     """
@@ -118,20 +118,29 @@ class Fy3eDnBlock:
         return self.__data
 
 
-class Fy3eDnBlocks:
+class Fy3MersiDnBlocks:
     """
     TODO: doc
     """
 
-    def __init__(self, blocks: list[Fy3eDnBlock]) -> None:
+    def __init__(self, name: str, blocks: list[Fy3MersiDnBlock]) -> None:
+        """
+        TODO: doc
+        """
+
+        self.__name = name
+        self.__blocks = blocks
+
+    @property
+    def name(self) -> list[Fy3MersiDnBlock]:
         """
         TODO: doc
         """
         
-        self.__blocks = blocks
-
+        return self.__name
+    
     @property
-    def blocks(self) -> list[Fy3eDnBlock]:
+    def blocks(self) -> list[Fy3MersiDnBlock]:
         """
         TODO: doc
         """
@@ -139,12 +148,12 @@ class Fy3eDnBlocks:
         return self.__blocks
 
 
-class Fy3eTransportBlock:
+class Fy3MersiTransportBlock:
     """
     TODO: doc
     """
 
-    def __init__(self, metadata: Fy3eMetadata, dn_data_blocks: list[Fy3eDnBlocks]) -> None:
+    def __init__(self, metadata: Fy3MersiMetadata, dn_data_blocks: list[Fy3MersiDnBlocks]) -> None:
         """
         TODO: doc
         """
@@ -153,7 +162,7 @@ class Fy3eTransportBlock:
         self.__dn_data_blocks = dn_data_blocks
 
     @property
-    def metadata(self) -> Fy3eMetadata:
+    def metadata(self) -> Fy3MersiMetadata:
         """
         TODO: doc
         """
@@ -161,7 +170,7 @@ class Fy3eTransportBlock:
         return self.__metadata
     
     @property
-    def dn_data_blocks(self) -> list[Fy3eDnBlocks]:
+    def dn_data_blocks(self) -> list[Fy3MersiDnBlocks]:
         """
         TODO: doc
         """
@@ -169,21 +178,21 @@ class Fy3eTransportBlock:
         return self.__dn_data_blocks
         
 
-class Fy3eFile:
+class Fy3MersiFile:
     """
     TODO: doc
     """
 
-    def __init__(self, header: Fy3eHeader, transport_blocks: list[Fy3eTransportBlock]) -> None:
+    def __init__(self, header: Fy3MersiHeader, transport_blocks: list[Fy3MersiTransportBlock]) -> None:
         """
         TODO: doc
         """
         
         self.__header = header
         self.__transport_blocks = transport_blocks
-
+    
     @property
-    def header(self) -> Fy3eHeader:
+    def header(self) -> Fy3MersiHeader:
         """
         TODO: doc
         """
@@ -191,7 +200,7 @@ class Fy3eFile:
         return self.__header
     
     @property
-    def transport_blocks(self) -> list[Fy3eTransportBlock]:
+    def transport_blocks(self) -> list[Fy3MersiTransportBlock]:
         """
         TODO: doc
         """
