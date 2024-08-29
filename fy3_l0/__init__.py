@@ -1,1 +1,1 @@
-from .reader import parse
+from .reader import Fy3eReader
