@@ -1,10 +1,8 @@
 from __future__ import annotations
 
 import io
+import datetime
 import numpy as np
-
-from datetime import datetime
-
 
 class Fy3MersiHeader:
     """
@@ -13,79 +11,72 @@ class Fy3MersiHeader:
 
     def __init__(self, satellite_name: str,
                        instrument: str,
-                       scan_start: datetime,
-                       scan_end: datetime,
-                       l0_date_creation: datetime) -> None:
+                       scan_start: datetime.datetime,
+                       scan_end: datetime.datetime,
+                       l0_date_creation: datetime.datetime) -> None:
         """
         TODO: doc
         """
         
-        self.__satellite_name = satellite_name
-        self.__instrument = instrument
-        self.__scan_start = scan_start
-        self.__scan_end = scan_end
-        self.__l0_date_creation = l0_date_creation
-
-    @property
-    def satellite_name(self) -> str:
-        """
-        TODO: doc
-        """
-        
-        return self.__satellite_name
-    
-    @property
-    def instrument(self) -> str:
-        """
-        TODO: doc
-        """
-        
-        return self.__instrument
-
-    @property
-    def scan_start(self) -> datetime:
-        """
-        TODO: doc
-        """
-        
-        return self.__scan_start
-    
-    @property
-    def scan_end(self) -> datetime:
-        """
-        TODO: doc
-        """
-
-        return self.__scan_end
-    
-    @property
-    def l0_date_creation(self) -> datetime:
-        """
-        TODO: doc
-        """
-        
-        return self.__l0_date_creation
-    
+        self.satellite_name = satellite_name
+        self.instrument = instrument
+        self.scan_start = scan_start
+        self.scan_end = scan_end
+        self.l0_date_creation = l0_date_creation    
 
 class Fy3MersiMetadata:
     """
     TODO: doc
     """
 
-    def __init__(self, data: bytes) -> None:
+    def __init__(self, frame_count: int, 
+                       day_count: datetime.datetime,
+                       time_interval: int,
+                       time_count: int,
+                       cal_signal_dn: int,
+                       bracket_calibrator_temp_dn: int,
+                       voc_temp_dn: int,
+                       cool_temp_voltage_dn: int,
+                       instrument_status_records: int,
+                       status_telemetry: int,
+                       k_mirror_motor_temp_dn: int,
+                       main_mirror_temp_dn: int,
+                       refl_mirror_temp_dn: int,
+                       vis_detector_temp_dn: int,
+                       near_ir_detector_temp_dn: int,
+                       swir_drv_temp_dn: int,
+                       vis_drv_temp_dn: int,
+                       ir_drv_temp_dn: int,
+                       obs_mode_voc: int,
+                       bb_temp_cnt: int,
+                       scans_type: int,
+                       obs_mode: int) -> None:
         """
         TODO: doc
         """
-        
-        self.__data = data
 
-    @property
-    def data(self) -> bytes:
-        """
-        TODO: doc
-        """
-        
-        return self.__data
+        self.frame_count = frame_count
+        self.day_count = day_count
+        self.time_interval = time_interval
+        self.time_count = time_count
+        self.cal_signal_dn = cal_signal_dn
+        self.bracket_calibrator_temp_dn = bracket_calibrator_temp_dn
+        self.voc_temp_dn = voc_temp_dn
+        self.cool_temp_voltage_dn = cool_temp_voltage_dn
+        self.instrument_status_records = instrument_status_records
+        self.status_telemetry = status_telemetry
+        self.k_mirror_motor_temp_dn = k_mirror_motor_temp_dn
+        self.main_mirror_temp_dn = main_mirror_temp_dn
+        self.refl_mirror_temp_dn = refl_mirror_temp_dn
+        self.vis_detector_temp_dn = vis_detector_temp_dn
+        self.near_ir_detector_temp_dn = near_ir_detector_temp_dn
+        self.swir_drv_temp_dn = swir_drv_temp_dn
+        self.vis_drv_temp_dn = vis_drv_temp_dn
+        self.ir_drv_temp_dn = ir_drv_temp_dn
+        self.obs_mode_voc = obs_mode_voc
+        self.bb_temp_cnt = bb_temp_cnt
+        self.scans_type = scans_type
+        self.obs_mode = obs_mode
 
 
 class Fy3MersiDnBlock:

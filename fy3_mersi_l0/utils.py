@@ -1,3 +1,10 @@
+# ================ Main information ================
+# File name: utils.py
+# Author: Timofeev Andrey
+# Date: 31.08.2024
+# Description: This file contains a set of function
+# ==================================================
+
 from __future__ import annotations
 from typing import Optional
 
@@ -7,8 +14,12 @@ from .l0_structures import Fy3MersiFile, Fy3MersiTransportBlock, Fy3MersiDnBlock
 
 
 def read_uint12(data_chunk: bytes) -> np.ndarray:
-    """
-    TODO: doc
+    """ This function 
+    :param data_chaunk: Data bytes 
+    :type data_chaunk: bytes
+
+    :return:
+    :rtype: Numpy ndarray
     """
     
     data = np.frombuffer(data_chunk, dtype=np.uint8)
